@@ -1,0 +1,32 @@
+﻿@using MvcStokTakip.Models.Entity;
+@model Urunler
+@{
+    ViewBag.Title = "Yeni";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<form class="form-group" method="post" style="width:50%">
+    <div>
+        <label>Ürün Adı</label>
+        <input type="text" class="form-control" name="ad" />
+    </div>
+    <div>
+        <label>Marka</label>
+        @Html.DropDownListFor(m => m.Markalar.id, (List<SelectListItem>)ViewBag.markalar, new { @class = "form-control" })
+    </div>
+    <div>
+        <label>Kategori</label>
+        @Html.DropDownListFor(m => m.Kategoriler.id, (List<SelectListItem>)ViewBag.kategoriler, new { @class = "form-control" })
+    </div>
+    <div>
+        <label>Stok</label>
+        <input type="text" class="form-control" name="stok" />
+    </div>
+    <div>
+        <label>Fiyat</label>
+        <input type="text" class="form-control" name="fiyat" />
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Ürün Ekle</button>
+    </div>
+</form>
