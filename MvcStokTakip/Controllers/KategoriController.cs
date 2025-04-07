@@ -49,5 +49,13 @@ namespace MvcStokTakip.Controllers
             var kategori = db.Kategoriler.Find(id);
             return View("Getir", kategori);
         }
+
+        public ActionResult Guncelle(Kategoriler kategori)
+        {
+            var kat = db.Kategoriler.Find(kategori.id);
+            kat.ad = kategori.ad;
+            db.SaveChanges();
+            return GotoMain();
+        }
     }
 }
