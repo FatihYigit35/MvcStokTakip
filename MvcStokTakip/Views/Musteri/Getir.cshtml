@@ -1,0 +1,24 @@
+﻿@model MvcStokTakip.Models.Entity.Musteriler
+
+@{
+    ViewBag.Title = "Getir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("Guncelle", "Musteri", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Id")
+        @Html.TextBoxFor(m => m.id, new { @class = "form-control" })
+        <br />
+        @Html.Label("Ad")
+        @Html.TextBoxFor(m => m.ad, new { @class = "form-control" })
+        <br />
+        @Html.Label("Soyad")
+        @Html.TextBoxFor(m => m.soyad, new { @class = "form-control" })
+    </div>
+    <div>
+        <button class="btn btn-success">Güncelle</button>
+    </div>
+}
+
