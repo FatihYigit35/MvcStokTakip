@@ -246,6 +246,7 @@
     <Content Include="Views\Marka\Yeni.cshtml" />
     <Content Include="Views\Kategori\Getir.cshtml" />
     <Content Include="Views\Musteri\Getir.cshtml" />
+    <Content Include="Views\Marka\Getir.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

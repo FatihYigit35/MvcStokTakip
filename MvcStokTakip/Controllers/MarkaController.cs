@@ -44,5 +44,19 @@ namespace MvcStokTakip.Controllers
         {
             return RedirectToAction("Index");
         }
+
+        public ActionResult Getir(int id)
+        {
+            var marka = db.Markalar.Find(id);
+            return View("Getir", marka);
+        }
+
+        public ActionResult Guncelle(Markalar marka)
+        {
+            var kat = db.Markalar.Find(marka.id);
+            kat.ad = marka.ad;
+            db.SaveChanges();
+            return GotoMain();
+        }
     }
 }

@@ -1,0 +1,21 @@
+﻿@model MvcStokTakip.Models.Entity.Markalar
+
+@{
+    ViewBag.Title = "Getir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("Guncelle", "Marka", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Id")
+        @Html.TextBoxFor(m => m.id, new { @class = "form-control" })
+        <br />
+        @Html.Label("Ad")
+        @Html.TextBoxFor(m => m.ad, new { @class = "form-control" })
+    </div>
+    <div>
+        <button class="btn btn-success">Güncelle</button>
+    </div>
+}
+
