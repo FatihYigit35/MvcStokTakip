@@ -44,6 +44,28 @@ namespace MvcStokTakip.Controllers
         [HttpPost]
         public ActionResult Yeni(Urunler urun)
         {
+            if (!ModelState.IsValid)
+            {
+                List<SelectListItem> kategoriler = (
+                    from i in db.Kategoriler.ToList()
+                    select new SelectListItem
+                    {
+                        Text = i.ad,
+                        Value = i.id.ToString()
+                    }).ToList();
+                ViewBag.kategoriler = kategoriler;
+
+                List<SelectListItem> markalar = (
+                    from i in db.Markalar.ToList()
+                    select new SelectListItem
+                    {
+                        Text = i.ad,
+                        Value = i.id.ToString()
+                    }).ToList();
+                ViewBag.markalar = markalar;
+
+                return View("Yeni", urun);
+            }
             var kategori = db.Kategoriler.Where(m => m.id == urun.Kategoriler.id).FirstOrDefault();
             urun.Kategoriler = kategori;
 

@@ -1,15 +1,17 @@
-﻿@using MvcStokTakip.Models.Entity;
-@model Urunler
+﻿@model MvcStokTakip.Models.Entity.Urunler
 @{
     ViewBag.Title = "Yeni";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
 <form class="form-group" method="post" style="width:50%">
-    <div>
-        <label>Ürün Adı</label>
-        <input type="text" class="form-control" name="ad" />
-    </div>
+    @*<div>
+            <label>Ürün Adı</label>
+            <input type="text" class="form-control" name="ad" />
+        </div>*@
+    @Html.Label("Ürün Adı")
+    @Html.TextBoxFor(m => m.ad, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.ad, "", new { @class = "text-danger" })
     <div>
         <label>Marka</label>
         @Html.DropDownListFor(m => m.Markalar.id, (List<SelectListItem>)ViewBag.markalar, new { @class = "form-control" })

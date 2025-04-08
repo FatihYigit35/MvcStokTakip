@@ -11,7 +11,8 @@ namespace MvcStokTakip.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Urunler
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +22,8 @@ namespace MvcStokTakip.Models.Entity
         }
     
         public int id { get; set; }
+        [Required(ErrorMessage = "Lütfen ürün adýný giriniz...")]
+        [StringLength(50, ErrorMessage = "Ürün adý 50 karakterden fazla olamaz...")]
         public string ad { get; set; }
         public Nullable<int> marka_id { get; set; }
         public Nullable<short> kategori_id { get; set; }

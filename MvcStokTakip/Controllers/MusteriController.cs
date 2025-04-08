@@ -26,6 +26,10 @@ namespace MvcStokTakip.Controllers
         [HttpPost]
         public ActionResult Yeni(Musteriler musteri)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("Yeni", musteri);
+            }
             db.Musteriler.Add(musteri);
             db.SaveChanges();
             return GotoMain();

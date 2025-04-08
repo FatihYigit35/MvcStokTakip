@@ -11,7 +11,8 @@ namespace MvcStokTakip.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Musteriler
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +22,13 @@ namespace MvcStokTakip.Models.Entity
         }
     
         public int id { get; set; }
+
+        [Required(ErrorMessage = "Lütfen müþteri adýný giriniz...")]
+        [StringLength(50, ErrorMessage = "Müþteri adý 50 karakterden fazla olamaz...")]
         public string ad { get; set; }
+
+        [Required(ErrorMessage = "Lütfen müþteri soyadýný giriniz...")]
+        [StringLength(50, ErrorMessage = "Müþteri soyadý 50 karakterden fazla olamaz...")]
         public string soyad { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

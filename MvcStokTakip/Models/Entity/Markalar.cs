@@ -11,7 +11,8 @@ namespace MvcStokTakip.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Markalar
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +22,9 @@ namespace MvcStokTakip.Models.Entity
         }
     
         public int id { get; set; }
+
+        [Required(ErrorMessage = "Lütfen marka adýný giriniz...")]
+        [StringLength(50, ErrorMessage = "Marka adý 50 karakterden fazla olamaz...")]
         public string ad { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

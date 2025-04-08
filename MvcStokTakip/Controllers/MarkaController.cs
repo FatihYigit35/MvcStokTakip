@@ -27,6 +27,10 @@ namespace MvcStokTakip.Controllers
         [HttpPost]
         public ActionResult Yeni(Markalar marka)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("Yeni", marka);
+            }
             db.Markalar.Add(marka);
             db.SaveChanges();
             return GotoMain();

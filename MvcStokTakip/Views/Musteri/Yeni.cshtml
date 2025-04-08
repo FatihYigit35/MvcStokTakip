@@ -1,18 +1,24 @@
-﻿
+﻿@model MvcStokTakip.Models.Entity.Musteriler
 @{
     ViewBag.Title = "Yeni";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
 <form class="form-group" method="post">
-    <div>
-        <label>Müşteri Adı</label>
-        <input type="text" class="form-control" name="ad" />
-    </div>
-    <div>
-        <label>Müşteri Soyadı</label>
-        <input type="text" class="form-control" name="soyad" />
-    </div>
+    @*<div>
+            <label>Müşteri Adı</label>
+            <input type="text" class="form-control" name="ad" />
+        </div>*@
+    @Html.Label("Müşteri Adı")
+    @Html.TextBoxFor(m => m.ad, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.ad, "", new { @class = "text-danger" })
+    @*<div>
+            <label>Müşteri Soyadı</label>
+            <input type="text" class="form-control" name="soyad" />
+        </div>*@
+    @Html.Label("Müşteri Soyadı")
+    @Html.TextBoxFor(m => m.ad, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.soyad, "", new { @class = "text-danger" })
     <div style="margin-top:15px">
         <button class="btn btn-info">Müşteri Ekle</button>
     </div>

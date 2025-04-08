@@ -1,14 +1,17 @@
-﻿
+﻿@model MvcStokTakip.Models.Entity.Markalar
 @{
     ViewBag.Title = "Yeni";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
 <form class="form-group" method="post">
-    <div>
-        <label>Marka Adı</label>
-        <input type="text" class="form-control" name="ad" />
-    </div>
+    @*<div>
+            <label>Marka Adı</label>
+            <input type="text" class="form-control" name="ad" />
+        </div>*@
+    @Html.Label("Marka Adı")
+    @Html.TextBoxFor(m => m.ad, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.ad, "", new { @class = "text-danger" })
     <div style="margin-top:15px">
         <button class="btn btn-info">Marka Ekle</button>
     </div>
