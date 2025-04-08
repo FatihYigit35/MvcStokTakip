@@ -5,10 +5,6 @@
 }
 
 <form class="form-group" method="post" style="width:50%">
-    @*<div>
-            <label>Ürün Adı</label>
-            <input type="text" class="form-control" name="ad" />
-        </div>*@
     @Html.Label("Ürün Adı")
     @Html.TextBoxFor(m => m.ad, new { @class = "form-control" })
     @Html.ValidationMessageFor(m => m.ad, "", new { @class = "text-danger" })
