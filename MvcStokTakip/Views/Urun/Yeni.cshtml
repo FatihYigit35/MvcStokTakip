@@ -5,16 +5,17 @@
 }
 
 <form class="form-group" method="post" style="width:50%">
-    @Html.Label("Ürün Adı")
-    @Html.TextBoxFor(m => m.ad, new { @class = "form-control" })
-    @Html.ValidationMessageFor(m => m.ad, "", new { @class = "text-danger" })
+    <div>
+        <label>Ürün Adı</label>
+        <input type="text" class="form-control" name="ad" required="" maxlength="50" />
+    </div>
     <div>
         <label>Marka</label>
-        @Html.DropDownListFor(m => m.Markalar.id, (List<SelectListItem>)ViewBag.markalar, new { @class = "form-control" })
+        @Html.DropDownListFor(m => m.marka_id, (List<SelectListItem>)ViewBag.markalar, new { @class = "form-control" })
     </div>
     <div>
         <label>Kategori</label>
-        @Html.DropDownListFor(m => m.Kategoriler.id, (List<SelectListItem>)ViewBag.kategoriler, new { @class = "form-control" })
+        @Html.DropDownListFor(m => m.kategori_id, (List<SelectListItem>)ViewBag.kategoriler, new { @class = "form-control" })
     </div>
     <div>
         <label>Stok</label>

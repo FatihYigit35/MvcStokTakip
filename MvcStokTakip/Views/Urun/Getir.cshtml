@@ -13,6 +13,18 @@
         <br />
         @Html.Label("Ad")
         @Html.TextBoxFor(m => m.ad, new { @class = "form-control" })
+        <br />
+        @Html.Label("Marka")
+        @Html.DropDownListFor(m => m.marka_id, (List<SelectListItem>)ViewBag.markalar, new { @class = "form-control" })
+        <br />
+        @Html.Label("Kategori")
+        @Html.DropDownListFor(m => m.kategori_id, (List<SelectListItem>)ViewBag.kategoriler, new { @class = "form-control" })
+        <br />
+        @Html.Label("Stok")
+        @Html.TextBoxFor(m => m.stok, new { @class = "form-control" })
+        <br />
+        @Html.Label("Fiyat")
+        @Html.TextBoxFor(m => m.fiyat, new { @class = "form-control" })
     </div>
     <div>
         <button class="btn btn-success">Güncelle</button>

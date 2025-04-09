@@ -46,30 +46,30 @@ namespace MvcStokTakip.Controllers
         {
             if (!ModelState.IsValid)
             {
-                List<SelectListItem> kategoriler = (
-                    from i in db.Kategoriler.ToList()
-                    select new SelectListItem
-                    {
-                        Text = i.ad,
-                        Value = i.id.ToString()
-                    }).ToList();
-                ViewBag.kategoriler = kategoriler;
-
-                List<SelectListItem> markalar = (
-                    from i in db.Markalar.ToList()
-                    select new SelectListItem
-                    {
-                        Text = i.ad,
-                        Value = i.id.ToString()
-                    }).ToList();
-                ViewBag.markalar = markalar;
-
                 return View("Yeni", urun);
             }
-            var kategori = db.Kategoriler.Where(m => m.id == urun.Kategoriler.id).FirstOrDefault();
+
+            List<SelectListItem> kategoriler = (
+                from i in db.Kategoriler.ToList()
+                select new SelectListItem
+                {
+                    Text = i.ad,
+                    Value = i.id.ToString()
+                }).ToList();
+            ViewBag.kategoriler = kategoriler;
+
+            List<SelectListItem> markalar = (
+                from i in db.Markalar.ToList()
+                select new SelectListItem
+                {
+                    Text = i.ad,
+                    Value = i.id.ToString()
+                }).ToList();
+            ViewBag.markalar = markalar;
+            var kategori = db.Kategoriler.Where(m => m.id == urun.kategori_id).FirstOrDefault();
             urun.Kategoriler = kategori;
 
-            var marka = db.Markalar.Where(m => m.id == urun.Markalar.id).FirstOrDefault();
+            var marka = db.Markalar.Where(m => m.id == urun.marka_id).FirstOrDefault();
             urun.Markalar = marka;
 
             db.Urunler.Add(urun);
@@ -93,13 +93,47 @@ namespace MvcStokTakip.Controllers
         public ActionResult Getir(int id)
         {
             var urun = db.Urunler.Find(id);
+
+            List<SelectListItem> kategoriler = (
+                from i in db.Kategoriler.ToList()
+                select new SelectListItem
+                {
+                    Text = i.ad,
+                    Value = i.id.ToString()
+                }).ToList();
+            ViewBag.kategoriler = kategoriler;
+
+            List<SelectListItem> markalar = (
+                from i in db.Markalar.ToList()
+                select new SelectListItem
+                {
+                    Text = i.ad,
+                    Value = i.id.ToString()
+                }).ToList();
+            ViewBag.markalar = markalar;
+
             return View("Getir", urun);
         }
 
-        public ActionResult Guncelle(Urunler urun)
+        public ActionResult Guncelle(Urunler yeniUrun)
         {
-            var kat = db.Urunler.Find(urun.id);
-            kat.ad = urun.ad;
+
+            //if (!ModelState.IsValid)
+            //{
+            //    return View("Getir", yeniUrun);
+            //}
+            var kategori = db.Kategoriler.Where(m => m.id == yeniUrun.kategori_id).FirstOrDefault();
+            yeniUrun.Kategoriler = kategori;
+
+            var marka = db.Markalar.Where(m => m.id == yeniUrun.marka_id).FirstOrDefault();
+            yeniUrun.Markalar = marka;
+
+            var urun = db.Urunler.Find(yeniUrun.id);
+            urun.ad = yeniUrun.ad;
+            urun.Markalar = yeniUrun.Markalar;
+            urun.Kategoriler = yeniUrun.Kategoriler;
+            urun.stok = yeniUrun.stok;
+            urun.fiyat = yeniUrun.fiyat;
             db.SaveChanges();
             return GotoMain();
         }
