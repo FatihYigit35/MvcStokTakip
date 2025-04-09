@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using MvcStokTakip.Models.Entity;
+using PagedList;
+using PagedList.Mvc;
 
 namespace MvcStokTakip.Controllers
 {
@@ -11,9 +10,9 @@ namespace MvcStokTakip.Controllers
     {
         // GET: Kategori
         private readonly MvcDenemeStokTakipEntities db = new MvcDenemeStokTakipEntities();
-        public ActionResult Index()
+        public ActionResult Index(int sayfa = 1)
         {
-            var katogiler = db.Kategoriler.ToList();
+            var katogiler = db.Kategoriler.ToList().ToPagedList(sayfa, 4);
             return View(katogiler);
         }
 

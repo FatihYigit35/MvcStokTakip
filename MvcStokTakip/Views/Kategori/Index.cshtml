@@ -1,5 +1,7 @@
 ﻿@using MvcStokTakip.Models.Entity;
-@model List<Kategoriler>
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Kategoriler>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -15,15 +17,16 @@
         <th>Kategori Günclle</th>
     </tr>
     <tbody>
-        @foreach(var ktgr in Model)
-            {
-                <tr>
-                    <td>@ktgr.id</td>
-                    <td>@ktgr.ad</td>
-                    <td><a href="/Kategori/Sil/@ktgr.id" class="btn btn-danger">Sil</a></td>
-                    <td><a href="/Kategori/Getir/@ktgr.id" class="btn btn-warning">Güncelle</a></td>
-                </tr>
-            }
+        @foreach (var ktgr in Model)
+        {
+            <tr>
+                <td>@ktgr.id</td>
+                <td>@ktgr.ad</td>
+                <td><a href="/Kategori/Sil/@ktgr.id" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Kategori/Getir/@ktgr.id" class="btn btn-warning">Güncelle</a></td>
+            </tr>
+        }
     </tbody>
 </table>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
 <a href="/Kategori/Yeni" class="btn btn-success">Yeni Kagetori Ekle</a>
