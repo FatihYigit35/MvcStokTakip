@@ -12,7 +12,12 @@
     @Html.TextBoxFor(m => m.soyad, new { @class = "form-control" })
     @Html.ValidationMessageFor(m => m.soyad, "", new { @class = "text-danger" })
     <div style="margin-top:15px">
-        <button class="btn btn-info">Müşteri Ekle</button>
+        <button class="btn btn-info" id="btnEkle">Müşteri Ekle</button>
     </div>
+    <script>
+        $('#btnEkle').click(function (e) {
+            alert("Müşteri Eklendi");
+        })
+    </script>
 </form>
 
