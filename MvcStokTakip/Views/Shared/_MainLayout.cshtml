@@ -26,15 +26,26 @@
                 <li><a href="/Musteri/Index">Müşteriler</a></li>
                 <li><a href="/Marka/Index">Markalar</a></li>
                 <li><a href="/Satis/Index">Satışlar</a></li>
-                <li><a href="#">Yardım</a></li>
+                <li><a href="#" type="button" data-toggle="modal" data-target="#ModalYardim">Yardım</a></li>
             </ul>
         </div>
     </nav>
 
     <div class="container">
-       @RenderBody()
+        @RenderBody()
     </div>
-
+    <div class="modal" id="ModalYardim">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Yardım</h2>
+                </div>
+                <div class="modal-body">
+                    Bu alanda yardım ile ilgili bilgiler bulunacak
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
 
