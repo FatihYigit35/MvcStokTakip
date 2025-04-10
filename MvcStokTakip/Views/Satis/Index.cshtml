@@ -1,4 +1,4 @@
-﻿
+﻿@model MvcStokTakip.Models.Entity.Satislar
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -11,19 +11,31 @@
             <div class="modal-header">
                 <h2 class="modal-title">Satış Ekranı</h2>
             </div>
-            <form>
+            <form method="post" action="/Satis/Yeni">
                 <div class="modal-body">
-                    <label>Ürün Adı</label>
-                    <input type="text" name="urun" class="form-control" />
+                    <div>
+                        @Html.Label("Ürün Adı")
+                        @Html.DropDownListFor(m => m.Urunler.id, (List<SelectListItem>)ViewBag.urunler, new { @class = "form-control" })
+                    </div>
                     <br />
-                    <label>Ürün Markası</label>
-                    <input type="text" name="marka" class="form-control" />
+                    <div>
+                        @Html.Label("Ürün Markası")
+                        @Html.DropDownListFor(m => m.Musteriler.id, (List<SelectListItem>)ViewBag.musteriler, new { @class = "form-control" })
+                    </div>
                     <br />
-                    <label>Müşteri Adı Soyadı</label>
-                    <input type="text" name="musteri" class="form-control" />
+                    <div>
+                        @Html.Label("Adet")
+                        @Html.TextBoxFor(m => m.adet, new { @class = "form-control" })
+                    </div>
                     <br />
-                    <label>Müşteri Telefonu</label>
-                    <input type="text" name="telefon" class="form-control" />
+                    <div>
+                        @Html.Label("Fiyat")
+                        @Html.TextBoxFor(m => m.fiyat, new { @class = "form-control" })
+                    </div>
+                    <br />
+                    <div>
+                        <button class="btn btn-info">Satış İşlemini Yap</button>
+                    </div>
                 </div>
             </form>
         </div>
