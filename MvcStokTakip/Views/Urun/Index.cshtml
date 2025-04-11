@@ -4,24 +4,20 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_MainLayout.cshtml";
-}
 
-<h2>Ürünlerin listelenceği sayfa</h2>
-
-<table class="table table-bordered">
-    <tr>
-        <th>Ürün Id</th>
-        <th>Ürün Ad</th>
-        <th>Marka</th>
-        <th>Kategori</th>
-        <th>Fiyat (TL)</th>
-        <th>Stok (Adet)</th>
-        <th>Ürün Sil</th>
-        <th>Ürün Günclle</th>
-    </tr>
+<table id="tbl1" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Ürün Id</th>
+            <th>Ürün Ad</th>
+            <th>Marka</th>
+            <th>Kategori</th>
+            <th>Fiyat (TL)</th>
+            <th>Stok (Adet)</th>
+            <th>Ürün Sil</th>
+            <th>Ürün Günclle</th>
+        </tr>
+    </thead>
     <tbody>
         @foreach (var urun in Model)
         {
@@ -39,3 +35,10 @@
     </tbody>
 </table>
 <a href="/Urun/Yeni" class="btn btn-success">Yeni Ürün Ekle</a>
+
+<script type="text/javascript" src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
+<link href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css" rel="stylesheet" />
+
+<script>
+    $('#tbl1').DataTable();
+</script>
